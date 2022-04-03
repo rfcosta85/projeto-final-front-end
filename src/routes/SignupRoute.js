@@ -293,7 +293,7 @@ export const SignupRoute = () => {
                         />
                         <InputRightElement>
                           <IconButton
-                            icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
+                            // icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
                             onClick={handleShowPasswordClick}
                             variant="unstyled"
                           />
