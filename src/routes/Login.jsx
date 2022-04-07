@@ -1,21 +1,20 @@
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icon'
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import {
+  Button,
   Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Button,
+  HStack,
   IconButton,
   Input,
   InputGroup,
   InputRightElement,
-  HStack,
-  VStack,
+  Link,
   Text,
   useToast,
-  Link,
+  VStack,
 } from '@chakra-ui/react'
-
 import { Field, Form, Formik } from 'formik'
 import { useState } from 'react'
 import {
@@ -60,6 +59,7 @@ export const Login = () => {
       })
     }
   }
+
   return (
     <Flex flexDir={['column', 'row']}>
       <Flex
@@ -68,7 +68,7 @@ export const Login = () => {
         alignItems="center"
         minW="50vw"
         minH="100vh"
-        bgImage="url('/assets/loginbglarge.png')"
+        bgImage="url('/images/loginbglarge.png')"
         bgSize="cover"
       >
         <svg
@@ -111,7 +111,8 @@ export const Login = () => {
           </defs>
         </svg>
       </Flex>
-      <Flex width="100%" flexDir={['column']}>
+
+      <Flex width={'100%'} flexDir={['column']}>
         <Flex
           display={['flex', 'none']}
           flexDir="column"
@@ -159,9 +160,10 @@ export const Login = () => {
             lineHeight="49.03px"
             color="white"
           >
-            Login
+            Realize o seu cadastro.
           </Text>
         </Flex>
+
         <Flex display={['none', 'flex']} flexDir="column" px="4.5rem" pt="2rem">
           <svg
             width="76"
@@ -198,8 +200,24 @@ export const Login = () => {
             lineHeight="49.03px"
             color="#00ACC1"
           >
-            Faça o Login
+            Crie a sua conta hoje. <br />
+            Realize o seu cadastro.
           </Text>
+        </Flex>
+
+        <Flex flexDir="column" px={['8', '4.5rem']} pt="30" pb="6">
+          <Text
+            as="h3"
+            fontStyle="normal"
+            fontWeight="600"
+            fontSize="24"
+            lineHeight="40px"
+            color="gray.900"
+            mb="8"
+          >
+            Login
+          </Text>
+
           <Formik
             initialValues={{
               email: '',
@@ -261,9 +279,9 @@ export const Login = () => {
                           />
                           <InputRightElement>
                             <IconButton
-                              // icon={
-                              //   showPassword ? <ViewOffIcon /> : <ViewIcon />
-                              // }
+                              icon={
+                                showPassword ? <ViewOffIcon /> : <ViewIcon />
+                              }
                               onClick={handleShowPasswordClick}
                               variant="unstyled"
                             />
@@ -288,6 +306,7 @@ export const Login = () => {
               </Form>
             )}
           </Formik>
+
           <Text mt="6" fontWeight="400" fontSize="16" lineHeight="24px">
             {'Ainda não possui uma conta?'}
             <br />
@@ -331,5 +350,3 @@ export const Login = () => {
     </Flex>
   )
 }
-
-export default Login()

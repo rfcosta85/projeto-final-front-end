@@ -1,39 +1,39 @@
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icon'
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import {
-  Link,
-  Input,
-  InputGroup,
-  InputRightElement,
+  Button,
+  Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Text,
-  Button,
-  IconButton,
-  useToast,
   HStack,
+  IconButton,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Link,
+  Text,
+  useToast,
   VStack,
-  Flex,
 } from '@chakra-ui/react'
+import { Field, Form, Formik } from 'formik'
+import { useEffect, useState } from 'react'
+import { useMutation } from 'react-query'
 import {
   Link as RouterDomLink,
   useNavigate,
   useLocation,
 } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 import * as Yup from 'yup'
-import { useMutation } from 'react-query'
-import { Field, Form, Formik } from 'formik'
-import { signup } from '../services/auth'
+import { signup } from '../services/auth.js'
 
-export const SignupRoute = () => {
-  const location = useLocation()
-  const navigate = useNavigate()
+export const Signup = () => {
   const toast = useToast()
   const mutation = useMutation('signup', signup)
+  const navigate = useNavigate()
+  const location = useLocation()
 
-  const [showPassword, setShowPassword] = useState(false)
-  const handleShowPasswordClick = () => setShowPassword(!showPassword)
+  const [showPassword, setshowPassword] = useState(false)
+  const handleShowPasswordClick = () => setshowPassword(!showPassword)
 
   const from = location.state?.from?.pathname || '/'
 
@@ -46,7 +46,7 @@ export const SignupRoute = () => {
       toast({
         title: 'Cadastro Realizado!',
         status: 'success',
-        duration: 10000,
+        duration: 5000,
         isClosable: true,
       })
       navigate(from, { replace: true })
@@ -58,10 +58,10 @@ export const SignupRoute = () => {
       toast({
         title:
           mutation.error.toJSON().status === 400
-            ? 'Usuário já cadastrado! Por favor realize o Login'
-            : 'Ocorreu um erro, por favor tente novamente mais tarde',
+            ? 'Usuário já cadastrado! Por favor realize o login'
+            : 'Ocorreu um erro, por favor tente novamente',
         status: 'error',
-        duration: 10000,
+        duration: 6000,
         isClosable: true,
       })
     }
@@ -71,11 +71,11 @@ export const SignupRoute = () => {
     <Flex flexDir={['column', 'row']}>
       <Flex
         display={['none', 'flex']}
-        justifyContent="center"
+        justifyContent={'center'}
         alignItems="center"
         minW="45vw"
         minH="100vh"
-        backgroundImage="url('../assets/backgroundDogLogin/dogLoginBckg.svg')"
+        backgroundImage="url('/images/loginbglarge.png')"
         bgSize="cover"
       >
         <svg
@@ -118,11 +118,15 @@ export const SignupRoute = () => {
           </defs>
         </svg>
       </Flex>
+
       <Flex
         display={['flex', 'none']}
-        flexDir="column"
+        flexDir={'column'}
         justifyContent="space-between"
-        bgImage={["url('../assets/backgroundDogLogin/dogLoginBckg.svg')"]}
+        bgImage={[
+          "url('/images/signupbgmobile.png')",
+          "url('/images/loginbglarge')",
+        ]}
         bgPosition="initial"
         bgRepeat="round"
         pt="12"
@@ -158,6 +162,7 @@ export const SignupRoute = () => {
           />
         </svg>
       </Flex>
+
       <Flex width="100%" flexDir="column" px={['8', '4.5rem']} pt="30" pb="6">
         <Flex>
           <svg
@@ -189,6 +194,7 @@ export const SignupRoute = () => {
             />
           </svg>
         </Flex>
+
         <Text
           as="h3"
           fontStyle="normal"
@@ -200,6 +206,7 @@ export const SignupRoute = () => {
         >
           Cadastro
         </Text>
+
         <Formik
           initialValues={{
             name: '',
@@ -293,7 +300,7 @@ export const SignupRoute = () => {
                         />
                         <InputRightElement>
                           <IconButton
-                            // icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
+                            icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
                             onClick={handleShowPasswordClick}
                             variant="unstyled"
                           />
@@ -318,6 +325,7 @@ export const SignupRoute = () => {
             </Form>
           )}
         </Formik>
+
         <Text mt="6" fontWeight="400" fontSize="16" lineHeight="24px">
           Já possui cadastro?
           <br />

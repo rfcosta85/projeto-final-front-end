@@ -1,25 +1,29 @@
 import {
+  Avatar,
+  Box,
   Drawer,
   DrawerBody,
   DrawerContent,
   DrawerHeader,
   DrawerOverlay,
-  Avatar,
-  Box,
   Flex,
-  useDisclosure,
   HStack,
   Text,
+  useDisclosure,
 } from '@chakra-ui/react'
 import { Fragment, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { APP_ROUTES } from '../routes'
 import { getFromStorage } from '../services/auth'
-import { ROUTES } from '../routes'
+import { CreatePostModal } from './CreatePostModal'
 
-export const Mobile = ({ children }) => {
+export const MobileLayout = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
+
   const btnRef = useRef()
+
   const location = useLocation()
+
   let navigate = useNavigate()
 
   return (
@@ -43,21 +47,22 @@ export const Mobile = ({ children }) => {
             <path
               d="M1.33333 16H22.6667C23.4 16 24 15.4 24 14.6667C24 13.9333 23.4 13.3333 22.6667 13.3333H1.33333C0.6 13.3333 0 13.9333 0 14.6667C0 15.4 0.6 16 1.33333 16ZM1.33333 9.33333H22.6667C23.4 9.33333 24 8.73333 24 8C24 7.26667 23.4 6.66667 22.6667 6.66667H1.33333C0.6 6.66667 0 7.26667 0 8C0 8.73333 0.6 9.33333 1.33333 9.33333ZM0 1.33333C0 2.06667 0.6 2.66667 1.33333 2.66667H22.6667C23.4 2.66667 24 2.06667 24 1.33333C24 0.6 23.4 0 22.6667 0H1.33333C0.6 0 0 0.6 0 1.33333Z"
               fill="#00ACC1"
-            ></path>
+            />
           </svg>
         </Box>
+
         <HStack width="100vw" justifyContent="center">
           <svg
             width="28"
             height="28"
             viewBox="0 0 28 28"
             fill="none"
-            xmlns="http://ww.w3.org/2000/svg"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <path
               d="M5.24992 14C6.86075 14 8.16659 12.6942 8.16659 11.0833C8.16659 9.47249 6.86075 8.16666 5.24992 8.16666C3.63909 8.16666 2.33325 9.47249 2.33325 11.0833C2.33325 12.6942 3.63909 14 5.24992 14Z"
               fill="#00ACC1"
-            ></path>
+            />
             <path
               d="M10.5002 9.33333C12.111 9.33333 13.4168 8.0275 13.4168 6.41667C13.4168 4.80584 12.111 3.5 10.5002 3.5C8.88933 3.5 7.5835 4.80584 7.5835 6.41667C7.5835 8.0275 8.88933 9.33333 10.5002 9.33333Z"
               fill="#00ACC1"
@@ -78,6 +83,9 @@ export const Mobile = ({ children }) => {
           <Text color="cyan.400">PETWITTER</Text>
         </HStack>
       </Box>
+
+      <CreatePostModal />
+
       <Drawer
         isOpen={isOpen}
         placement="left"
@@ -87,13 +95,11 @@ export const Mobile = ({ children }) => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader pt="10" pb="8" mx="auto">
-            <Avatar
-              name={getFromStorage('user')?.name ?? 'Hello World'}
-              size="lg"
-            />
+            <Avatar name={getFromStorage('user')?.name ?? 'Olá!'} size="lg" />
           </DrawerHeader>
+
           <DrawerBody p="0">
-            {ROUTES.map((route) => (
+            {APP_ROUTES.map((route) => (
               <Flex
                 key={route.name}
                 borderLeft={route.url === location.pathnme ? 'solid' : 'none'}
@@ -129,6 +135,7 @@ export const Mobile = ({ children }) => {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
+
       <Box pt={['48px', '0']}>{children}</Box>
     </Fragment>
   )

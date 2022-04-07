@@ -1,9 +1,9 @@
-import { extendTheme, theme as base } from '@chakra-ui/react'
+import { extendTheme, theme as base } from '@chakra-ui/react';
 
 export const newTheme = {
   colors: {
     cyan: {
-      400: '#00acc1',
+      400: '#00ACC1',
     },
     gray: {
       600: '#757575',
@@ -20,39 +20,39 @@ export const newTheme = {
         color: 'gray.800',
         fontWeight: '600',
         fontSize: '14',
-        lineHeigth: '16px',
+        lineHeight: '16px',
       },
     },
-  },
-  Button: {
-    variants: {
-      solid: {
-        backgroundColor: 'cyan.400',
-        color: 'white',
-      },
-    },
-  },
-  Input: {
-    baseStyle: {
-      field: {
-        borderColor: 'gray.600',
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        _focus: {
-          borderWidth: '2px',
-          borderColor: 'cyan.400',
+    Button: {
+      variants: {
+        solid: {
+          backgroundColor: 'cyan.400',
+          color: 'white',
         },
       },
     },
-    defaultProps: {
-      variant: null,
+    Input: {
+      baseStyle: {
+        field: {
+          borderColor: 'gray.600',
+          borderWidth: '1px',
+          borderStyle: 'solid',
+          _focus: {
+            borderWidth: '2px',
+            borderColor: 'cyan.400',
+          },
+        },
+      },
+      defaultProps: {
+        variant: null, // null here
+      },
+    },
+    Link: {
+      baseStyle: {
+        color: 'cyan.400',
+      },
     },
   },
-  Link: {
-    baseStyle: {
-      color: 'cyan.400',
-    },
-  },
-}
+};
 
-export const theme = extendTheme(newTheme)
+export const theme = extendTheme(newTheme);
