@@ -5,6 +5,7 @@ import { AuthProvider, RequireAuth } from './context/auth-context'
 import { Login } from './routes/Login'
 import { Profile } from './routes/Profile'
 import { Signup } from './routes/Signup'
+import { Home } from './routes/Home'
 
 const App = () => {
   const queryClient = new QueryClient()
@@ -18,10 +19,19 @@ const App = () => {
 
           <Route element={<Layout />}>
             <Route
-              path="/profile"
+              path="*"
               element={
                 <RequireAuth>
-                  <Profile />
+                  <Home />
+                </RequireAuth>
+              }
+            />
+
+            <Route
+              path="/"
+              element={
+                <RequireAuth>
+                  <Home />
                 </RequireAuth>
               }
             />
