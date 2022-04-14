@@ -265,9 +265,7 @@ export const Login = () => {
                               fontWeight="400"
                               fontSize="12"
                               lineHeight="16px"
-                            >
-                              Esqueci minha senha
-                            </Text>
+                            ></Text>
                           </Link>
                         </HStack>
                         <InputGroup>
@@ -307,13 +305,20 @@ export const Login = () => {
             )}
           </Formik>
 
-          <Text mt="6" fontWeight="400" fontSize="16" lineHeight="24px">
-            {'Ainda não possui uma conta?'}
-            <br />
-            <Link as={RouterDomLink} to="/signup">
-              Cadastrar-se
-            </Link>
-          </Text>
+          <Flex display="flex" flexDirection="row">
+            <Text mt="6" fontWeight="400" fontSize="16" lineHeight="24px">
+              {'Ainda não possui uma conta?'}
+              <Link
+                as={RouterDomLink}
+                to="/signup"
+                marginLeft="10px"
+                textDecoration="underline"
+              >
+                Cadastrar-se
+              </Link>
+            </Text>
+          </Flex>
+
           <HStack display={['flex', 'none']} mx="auto" mt="57">
             <svg
               width="43"

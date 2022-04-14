@@ -72,9 +72,12 @@ export const TweetZone = () => {
             px="1.5rem"
           >
             <HStack>
-              <Avatar name={getFromStorage('user').name} />
+              <Avatar
+                name={getFromStorage('user').name}
+                src="/images/peter.svg"
+              />
               <Textarea
-                rows="4"
+                rows="2"
                 name="text"
                 value={values.text}
                 onChange={handleChange}

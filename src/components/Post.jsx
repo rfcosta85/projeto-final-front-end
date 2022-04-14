@@ -17,7 +17,7 @@ export const Post = ({ user: { id, name, username }, createAt, text }) => {
       borderBottomColor="gray.200"
       borderBottomWidth="1px"
     >
-      <Avatar name={name} />
+      <Avatar name={name} src="/images/peter.svg" />
       <Box ml="2">
         <HStack spacing="1">
           <Link to={`/profile/${id}`}>

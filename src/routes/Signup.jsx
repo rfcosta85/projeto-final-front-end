@@ -248,7 +248,6 @@ export const Signup = () => {
                     </FormControl>
                   )}
                 </Field>
-
                 <Field name="email">
                   {({ field, form }) => (
                     <FormControl
@@ -265,7 +264,6 @@ export const Signup = () => {
                     </FormControl>
                   )}
                 </Field>
-
                 <Field name="username">
                   {({ field, form }) => (
                     <FormControl
@@ -276,7 +274,7 @@ export const Signup = () => {
                         {...field}
                         name="username"
                         type="text"
-                        placeholder="Ex.: billbulldog"
+                        placeholder="Ex.: @carlos1234"
                       />
                       <FormErrorMessage>
                         {form.errors.username}
@@ -284,7 +282,6 @@ export const Signup = () => {
                     </FormControl>
                   )}
                 </Field>
-
                 <Field name="password">
                   {({ field, form }) => (
                     <FormControl
@@ -309,11 +306,13 @@ export const Signup = () => {
                       <FormErrorMessage>
                         {form.errors.password}
                       </FormErrorMessage>
+                      <Text fontSize="14px">
+                        Deve conter no mínimo um número e uma letra maiúscula
+                      </Text>
                     </FormControl>
                   )}
                 </Field>
               </VStack>
-
               <Button
                 width="full"
                 type="submit"
@@ -328,8 +327,12 @@ export const Signup = () => {
 
         <Text mt="6" fontWeight="400" fontSize="16" lineHeight="24px">
           Já possui cadastro?
-          <br />
-          <Link as={RouterDomLink} to="/login">
+          <Link
+            as={RouterDomLink}
+            to="/login"
+            marginLeft="10px"
+            textDecoration="underline"
+          >
             Faça login
           </Link>
         </Text>
