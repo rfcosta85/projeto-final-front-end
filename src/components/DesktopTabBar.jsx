@@ -1,11 +1,12 @@
-import { Flex, Text, HStack } from '@chakra-ui/react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { APP_ROUTES } from '../routes';
+import { Flex, Text, HStack } from '@chakra-ui/react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { APP_ROUTES } from '../routes'
+import BasicUsage from '../components/BasicUsage'
 
 export const DesktopTabBar = () => {
-  const location = useLocation();
+  const location = useLocation()
 
-  let navigate = useNavigate();
+  let navigate = useNavigate()
 
   return (
     <Flex display={['none', 'flex']} flexDir="column" height="100vh" flex="1">
@@ -42,7 +43,7 @@ export const DesktopTabBar = () => {
           PETWITTER
         </Text>
       </HStack>
-      {APP_ROUTES.map(route => (
+      {APP_ROUTES.map((route) => (
         <Flex
           key={route.name}
           borderLeft={route.url === location.pathnme ? 'solid' : 'none'}
@@ -57,7 +58,7 @@ export const DesktopTabBar = () => {
           }
           _focusVisible={{ outlineColor: 'white' }}
           onClick={() => {
-            navigate(route.url);
+            navigate(route.url)
           }}
           alignItems="center"
           pl="4.5rem"
@@ -78,6 +79,7 @@ export const DesktopTabBar = () => {
           </Text>
         </Flex>
       ))}
+      <BasicUsage></BasicUsage>
     </Flex>
-  );
-};
+  )
+}
