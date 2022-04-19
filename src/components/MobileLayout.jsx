@@ -15,6 +15,7 @@ import { Fragment, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { APP_ROUTES } from '../routes'
 import { getFromStorage } from '../services/auth'
+import BasicUsage from './BasicUsage'
 import { CreatePostModal } from './CreatePostModal'
 
 export const MobileLayout = ({ children }) => {
@@ -132,6 +133,10 @@ export const MobileLayout = ({ children }) => {
                 </Text>
               </Flex>
             ))}
+            <Flex marginLeft="50px">
+              {' '}
+              <BasicUsage></BasicUsage>{' '}
+            </Flex>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
